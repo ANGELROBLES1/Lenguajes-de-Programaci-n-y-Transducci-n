@@ -1,1 +1,1 @@
-# Lenguajes-de-Programaci-n-y-Transducci-n
+# Lenguajes-de-Programacion-y-Transduccion
