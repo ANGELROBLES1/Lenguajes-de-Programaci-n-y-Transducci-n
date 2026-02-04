@@ -10,7 +10,7 @@ class RecomendacionesProductos:
         # Registrar producto en usuario
         if usuario not in self.user_products:
             self.user_products[usuario] = set()
-        self.user_products[usuario].add(producto)
+        self.user_products[usuario].add(producto) # Agregar producto al conjunto del usuario
 
         # Registrar usuario en producto
         if producto not in self.product_users:
@@ -18,11 +18,11 @@ class RecomendacionesProductos:
         self.product_users[producto].add(usuario)
 
     def getRecommendations(self, usuario):
-        if usuario not in self.user_products:
+        if usuario not in self.user_products: # El usuario no existe
             return []
 
         recomendaciones = set()
-        productos_usuario = self.user_products[usuario]
+        productos_usuario = self.user_products[usuario] # Productos que el usuario ya compro
 
         for producto in productos_usuario:
             usuarios_relacionados = self.product_users.get(producto, set())
@@ -38,16 +38,15 @@ class RecomendacionesProductos:
 
         return list(recomendaciones)
 
-rs = RecomendacionesProductos()
+rs = RecomendacionesProductos() # Crear instancia del sistema de recomendaciones
 
-rs.addPurchase("Ana", "Laptop")
-rs.addPurchase("Ana", "Mouse")
+rs.addPurchase("Santiago", "Laptop")
+rs.addPurchase("Santiago", "Mouse")
 
-rs.addPurchase("Juan", "Laptop")
-rs.addPurchase("Juan", "Teclado")
+rs.addPurchase("Deivid", "Laptop")
+rs.addPurchase("Deivid", "Teclado")
 
-rs.addPurchase("Luis", "Mouse")
-rs.addPurchase("Luis", "Monitor")
+rs.addPurchase("Pedro", "Mouse")
+rs.addPurchase("Pedro", "Monitor")
 
-print(rs.getRecommendations("Ana"))
-
+print(rs.getRecommendations("Santiago")) 
